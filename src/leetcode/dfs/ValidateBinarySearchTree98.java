@@ -21,17 +21,33 @@ public class ValidateBinarySearchTree98 {
 			val = x;
 		}
 	}
-
+	private boolean isValid = true;
+	private long tmpVal = Long.MIN_VALUE;
 	public boolean isValidBST(TreeNode root) {
+		helper(root);
+		return isValid;
+	}
+	
+	private void helper(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		helper(root.left);
+		if (tmpVal < root.val) {
+			tmpVal = root.val;
+		} else {
+			isValid = false;
+		}
 		
+		helper(root.right);
 	}
 	
 	
 	@Test
 	public void test() {
-		TreeNode root = new TreeNode(2), node1 = new TreeNode(1), node3 = new TreeNode(3);
+		// TreeNode root = new TreeNode(1), node1 = new TreeNode(1), node3 = new TreeNode(3);
+		TreeNode root = new TreeNode(1), node1 = new TreeNode(1);
 		root.left = node1;
-		root.right = node3;
 		System.out.println("isValidBST: " + isValidBST(root));
 	}
 }

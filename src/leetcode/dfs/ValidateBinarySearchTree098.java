@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author xwang
  *
  */
-public class ValidateBinarySearchTree98 {
+public class ValidateBinarySearchTree098 {
 	public class TreeNode {
 		int val;
 		TreeNode left;

@@ -1,52 +1,12 @@
-package leetcode.dp;
+package amazon.sde;
 
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * Give a string s, find the longest palindromic substring in s. You may assume
- * that the maximum length of s is 1000.
- * 
- * @author xwang
- *
- */
-public class LongestPalindromicSubstring005 {
-	/**
-	 * Input: babad Output: bab dp[i][j]: the longest palindromic substring from i
-	 * to j. dp[i][j] = dp[i + 1][j - 1]; if s[i] == s[j] dp[i][j] = false; if s[i]
-	 * != s[j] dp[i][i] = true; dp[i][i - 1] = false;
-	 * 
-	 * @param s
-	 * @return
-	 */
-	public String longestPalindrome(String s) {
-		if (s == null) {
-			return null;
-		}
-		int len = s.length();
-		boolean[][] dp = new boolean[len][len];
-		String res = "";
-		for (int i = 0; i < len; i++) {
-			dp[i][i] = true;
-		}
-
-		for (int i = len - 1; i >= 0; --i) {
-			for (int j = i; j < len; ++j) {
-				if (s.charAt(i) == s.charAt(j) && ((j - i < 3) || dp[i + 1][j - 1])) {
-					dp[i][j] = true;
-				}
-				if (dp[i][j] && (j - i + 1) > res.length()) {
-					res = s.substring(i, j + 1);
-				}
-			}
-		}
-		return res;
-	}
-
-	/**
-	 * Method 2: Manacher Algorithm
-	 */
+public class ManacherPalindromeSubstring {
+	
+	
 	public String findLongest(String s) {
 		if (s == null || s.length() == 0)
 			return "";
@@ -116,10 +76,9 @@ public class LongestPalindromicSubstring005 {
 		}
 		return cs2;
 	}
-
+	
 	@Test
 	public void test() {
-		String s = "babad";
-		System.out.println(longestPalindrome(s));
+		System.out.println(findLongest("babad"));
 	}
 }

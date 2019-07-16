@@ -7,6 +7,6 @@ package leetcode.string;
  */
 public class MostCommonWord819 {
 	public String mostCommonWord(String paragraph, String[] banned) {
-			
+		return null;	
 	}
 }

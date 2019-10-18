@@ -19,6 +19,7 @@ public class FizzBuzz412 {
 				res.add(i + "");
 			}
 		}
+		System.out.println(res);
 		return res;
 	}
 	
